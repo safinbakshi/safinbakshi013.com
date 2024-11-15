@@ -1,3 +1,14 @@
+// Hide the emoji and speech bubble after 5 seconds
+setTimeout(() => {
+    document.getElementById('emoji-wrapper').style.display = 'none';
+}, 5000);
+
+setTimeout(() => {
+    document.getElementById('intro-overlay').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+}, 5000);
+
+
 document.addEventListener("DOMContentLoaded", function () {
     /* Smooth Scroll for Navigation Links */
     const navLinks = document.querySelectorAll(".nav a");
@@ -16,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
 
     /* Typewriter Effect for Header */
     const headerText = " Hello! I’m Ahasanul Habib Safin, a dedicated student and a simple, down-to-earth individual who strives to learn, grow, and make an impact.";
