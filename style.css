@@ -1,4 +1,152 @@
 /* General Reset */
+/* Wrapper for the emoji and speech bubble */
+#emoji-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: emojiBounce 1.5s infinite alternate;
+}
+
+/* Emoji styling */
+.emoji {
+    font-size: 3rem;
+    animation: wave 1s infinite alternate ease-in-out;
+}
+
+/* Speech bubble styling */
+.speech-bubble {
+    position: relative;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: fadeInOut 5s forwards;
+}
+
+/* Speech bubble arrow */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-right-color: #333;
+    border-left: 0;
+    margin-top: -10px;
+}
+
+/* Emoji waving animation */
+@keyframes wave {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(20deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Emoji bounce effect */
+@keyframes emojiBounce {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    100% { transform: translate(-50%, -45%) scale(1.1); }
+}
+
+/* Fade-in and fade-out for speech bubble */
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 1;
+    }
+}
+
+/* Fullscreen overlay for intro */
+#intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff; /* Choose a background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Enhanced intro text styling */
+.intro-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    opacity: 1;
+    animation: textEffect 5s forwards;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation for scale-up, color change, and fade-out */
+@keyframes textEffect {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+        color: #ff6347; /* Initial color (Tomato) */
+    }
+    25% {
+        opacity: 1;
+        transform: scale(1.1);
+        color: #ff4500; /* OrangeRed */
+    }
+    50% {
+        transform: scale(1);
+        color: #ff1493; /* DeepPink */
+    }
+    80% {
+        opacity: 1;
+        transform: scale(1);
+        color: #1e90ff; /* DodgerBlue */
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+        color: #333; /* Final color */
+    }
+}
+
+
+.photo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 300px;  /* Adjust based on your needs */
+    height: 300px; /* Adjust based on your needs */
+    border-radius: 50%; /* Makes it a circle */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.animated-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.photo-container:hover .animated-photo {
+    transform: scale(1.1) rotate(5deg); /* Zoom and slight rotation */
+    filter: brightness(1.2); /* Slightly brightens the image */
+}
+
+.photo-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -567,100 +715,3 @@ body {
     border: 3px solid #ffb703; /* Adds a border color */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a shadow for depth */
 }
-/* latin-ext */
-@font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 100;
-    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiGyp8kv8JHgFVrLPTufntAKPY.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 100;
-    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiGyp8kv8JHgFVrLPTucHtA.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 200;
-    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLFj_Z1JlFc-K.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 200;
-    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLFj_Z1xlFQ.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 300;
-    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLDz8Z1JlFc-K.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 300;
-    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLDz8Z1xlFQ.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJnecmNE.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJfecg.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLGT9Z1JlFc-K.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLGT9Z1xlFQ.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLEj6Z1JlFc-K.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLEj6Z1xlFQ.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  
